@@ -1,0 +1,12 @@
+/* ---------- Step 13: corner title scrolls away, demo notice and controls ---------- */
+
+/* The corner title used to stay fixed and covered the page text while scrolling.
+   Now it sits at the top-left of the page and scrolls away with it. */
+.brand.corner { position: absolute; }
+
+.demo-box { margin-top: 16px; padding-top: 14px; border-top: 1px solid rgba(255,255,255,0.1); text-align: center; }
+.demo-box .hint { margin: 0 0 10px; }
+.demo-box .btn-primary { background: transparent; color: var(--green); border: 1px solid var(--green); box-shadow: none; }
+.demo-box .btn-primary:hover { background: rgba(61,220,151,0.12); }
+
+#demoPanel .ma-btns { margin-top: 10px; }

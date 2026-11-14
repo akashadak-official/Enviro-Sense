@@ -1,0 +1,25 @@
+/* ---------- Step 11: incident banner and My alerts ---------- */
+.incident { border-radius: 14px; padding: 14px 18px; margin-bottom: 16px; border: 1px solid #ef4444;
+  background: rgba(239,68,68,0.16); color: #fecaca; line-height: 1.5; animation: pulse 1.6s ease-in-out infinite; }
+.incident.ALERT { border-color: #f97316; background: rgba(249,115,22,0.15); color: #fed7aa; }
+.incident b { display: block; font-size: 1rem; margin-bottom: 4px; }
+.incident p { margin: 0 0 6px; font-size: 0.9rem; }
+.incident small { opacity: 0.8; font-size: 0.74rem; }
+
+.ma-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin: 14px 0; }
+.ma-box { border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 14px; background: rgba(0,0,0,0.18); }
+.ma-check { display: flex; align-items: center; gap: 8px; font-size: 0.9rem; cursor: pointer; }
+.ma-check input { width: 16px; height: 16px; accent-color: var(--green); }
+.ma-box .hint { margin: 4px 0 10px; }
+.ma-home { margin: 8px 0; font-size: 0.88rem; color: var(--text, #e8f5ee); }
+.ma-btns { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: 8px 0; }
+.ma-btns input { flex: 1 1 150px; min-width: 0; padding: 8px 10px; border-radius: 8px; font: inherit; font-size: 0.85rem;
+  border: 1px solid rgba(255,255,255,0.14); background: rgba(0,0,0,0.3); color: inherit; }
+.ma-actions { margin-top: 4px; }
+.ma-status.bad { color: #fca5a5; }
+.ma-history { margin-top: 8px; max-height: 220px; overflow: auto; font-size: 0.78rem; }
+.ma-row { padding: 6px 8px; border-bottom: 1px solid rgba(255,255,255,0.06); color: var(--muted); }
+.ma-row.FIRE, .ma-row.WARNING { color: #fecaca; }
+.ma-row.ALERT { color: #fed7aa; }
+
+@keyframes pulse { 0%, 100% { box-shadow: 0 0 0 0 rgba(239,68,68,0.0); } 50% { box-shadow: 0 0 0 6px rgba(239,68,68,0.18); } }

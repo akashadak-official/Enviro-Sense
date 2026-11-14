@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enviro Sense | Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Orbitron:wght@600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/fire.css">
+  <link rel="stylesheet" href="css/dash.css">
+  <link rel="stylesheet" href="css/dash-step10.css">
+  <link rel="stylesheet" href="css/dash-step11.css">
+  <link rel="stylesheet" href="css/dash-step12.css">
+  <link rel="stylesheet" href="css/step13.css">
+</head>
+<body>
+  <div class="bg-glow g1"></div>
+  <div class="bg-glow g2"></div>
+
+  <!-- The title block is already in the corner, where the login animation left it -->
+  <header class="brand corner no-anim" id="brand">
+    <h1 class="brand-title">Enviro Sense</h1>
+    <p class="brand-team">by team CyberNex HIT</p>
+    <p class="brand-college">Haldia Institute of Technology</p>
+    <p class="brand-dept">Department of Computer Science &amp; Engineering (Cyber Security)</p>
+  </header>
+
+  <div class="topbar dash-top">
+    <div class="who">
+      <span id="whoText"></span>
+      <span class="modeTag" id="modeTag"></span>
+      <a class="logout" href="history.html">My history</a>
+      <a id="adminPanelLink" class="logout hidden" href="admin.html">Admin panel</a>
+      <a id="adminLink" class="logout hidden" href="fire.html">Admin tools</a>
+      <button id="logoutBtn" class="logout">Log out</button>
+    </div>
+  </div>
+
+  <main class="fire-page dash-main">
+    <section class="locbar">
+      <div id="lockedBox" class="locked hidden">
+        <span>🔒</span><b id="lockedName"></b>
+        <span>Local mode: the location is fixed to this device and cannot be changed</span>
+      </div>
+
+      <div id="searchBox" class="search-wrap hidden">
+        <input id="placeInput" name="enviro-place-q" type="text" autocomplete="off"
+               autocapitalize="off" spellcheck="false"
+               placeholder="Search any city (for example Haldia, Kolkata, Mumbai)">
+        <div id="suggest" class="suggest hidden"></div>
+        <div id="chips" class="chips"></div>
+      </div>
+
+      <div class="controls">
+        <select id="radiusSel">
+          <option value="25">25 km</option>
+          <option value="50" selected>50 km</option>
+          <option value="100">100 km</option>
+          <option value="200">200 km</option>
+        </select>
+        <select id="yearSel"></select>
+      </div>
+      <p class="hint" id="placeNow"></p>
+    </section>
+
+    <div id="incidentBar" class="incident hidden" role="alert" aria-live="assertive"></div>
+    <div id="alertBar" class="alert hidden"></div>
+
+    <section class="panel live">
+      <div class="live-head">
+        <div><b id="liveName">Live sensor</b> <span class="hint" id="liveMeta"></span></div>
+        <span class="pill" id="statusPill">--</span>
+      </div>
+      <p class="hint hidden" id="liveEmpty"></p>
+
+      <div id="liveBody">
+        <div class="tiles">
+          <div class="tile" id="tTemp"><span>Temperature</span><b>--</b><div class="gauge"><div class="gfill"></div></div></div>
+          <div class="tile" id="tHum"><span>Humidity</span><b>--</b><div class="gauge"><div class="gfill"></div></div></div>
+          <div class="tile" id="tSmoke"><span>Smoke level</span><b>--</b><div class="gauge"><div class="gfill"></div></div></div>
+          <div class="tile" id="tCpu"><span>Device CPU temp</span><b>--</b><div class="gauge"><div class="gfill"></div></div></div>
+        </div>
+        <div id="ewBox" class="ew hidden"></div>
+        <div class="sparks">
+          <div class="spark"><span>Temperature, last hour</span><canvas id="spTemp"></canvas><em id="spTempMeta"></em></div>
+          <div class="spark"><span>Smoke, last hour</span><canvas id="spSmoke"></canvas><em id="spSmokeMeta"></em></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel hidden" id="demoPanel">
+      <b>Demo controls</b>
+      <p class="hint">This online demo runs a simulated sensor at Haldia (use Local mode, or search Haldia in Global mode). Start an event and watch the live panel, the early warning and the alert banner react. It returns to normal by itself.</p>
+      <div class="ma-btns">
+        <button type="button" class="btn-small ghost" id="demoSmolder">Simulate a slow burn (early warning first, about 4 min)</button>
+        <button type="button" class="btn-small ghost" id="demoFire">Simulate a fast fire (about 40 s)</button>
+      </div>
+      <p class="hint" id="demoMsg"></p>
+    </section>
+
+    <h3 class="sec-title">Fire-risk outlook, next 14 days</h3>
+    <section class="panel" id="fcPanel">
+      <div class="fc-head">
+        <div class="fc-summary" id="fcSummary">Calculating outlook...</div>
+        <span class="pill" id="fcLevel">--</span>
+      </div>
+      <div class="fc-chart" id="fcChart"></div>
+      <div class="fc-legend hidden" id="fcLegend">
+        <span><i class="sw LOW"></i> low</span>
+        <span><i class="sw MODERATE"></i> moderate</span>
+        <span><i class="sw HIGH"></i> high</span>
+        <span><i class="sw rng"></i> likely range</span>
+        <span><i class="sw nrm"></i> typical for the season</span>
+      </div>
+      <p class="hint" id="fcNotes"></p>
+      <p class="hint" id="fcBacktest"></p>
+
+      <div class="brief">
+        <div class="brief-head">
+          <b>Briefing</b>
+          <span class="hint" id="briefSource"></span>
+          <button type="button" class="btn-small ghost hidden" id="briefAi">Ask AI to write it</button>
+        </div>
+        <p class="brief-text" id="briefText">Preparing briefing...</p>
+        <p class="hint" id="briefNote"></p>
+      </div>
+    </section>
+
+    <h3 class="sec-title">My alerts</h3>
+    <section class="panel" id="myAlerts">
+      <p class="hint">Get an email or text message as soon as a sensor near your home shows an early warning, warning or fire. Alerts come from the live sensor readings, even when this page is closed.</p>
+
+      <div class="ma-grid">
+        <div class="ma-box">
+          <label class="ma-check"><input type="checkbox" id="maEmail"> <b>Email alerts</b></label>
+          <p class="hint" id="maEmailHint"></p>
+          <label class="ma-check"><input type="checkbox" id="maSms"> <b>Text message (SMS) alerts</b></label>
+          <p class="hint" id="maSmsHint"></p>
+          <label class="ma-check"><input type="checkbox" id="maCall"> <b>Phone call alerts</b></label>
+          <p class="hint" id="maCallHint"></p>
+          <label class="ma-check"><input type="checkbox" id="maCircular"> <b>Monthly safety circular</b></label>
+          <p class="hint" id="maCircularHint"></p>
+        </div>
+
+        <div class="ma-box">
+          <b>Home location</b>
+          <p class="ma-home" id="maHome">Not set</p>
+          <div class="ma-btns">
+            <button type="button" class="btn-small ghost" id="maHomePlace">Use the place I am viewing</button>
+            <button type="button" class="btn-small ghost" id="maHomeGps">Use my current location</button>
+          </div>
+          <p class="hint">Email goes to people within 100 km of a sensor, SMS to people within 1 km.</p>
+        </div>
+
+        <div class="ma-box">
+          <b>Mobile number</b>
+          <p class="hint" id="maPhoneNow"></p>
+          <div class="ma-btns">
+            <input id="maPhone" name="enviro-alert-phone" type="tel" inputmode="numeric" autocomplete="off" placeholder="10-digit mobile number">
+            <button type="button" class="btn-small ghost" id="maSendCode">Send code</button>
+          </div>
+          <div class="ma-btns">
+            <input id="maCode" name="enviro-alert-code" type="text" inputmode="numeric" maxlength="6" autocomplete="off" placeholder="6-digit code">
+            <button type="button" class="btn-small ghost" id="maVerify">Verify</button>
+            <button type="button" class="btn-small ghost hidden" id="maRemovePhone">Remove number</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="ma-btns ma-actions">
+        <button type="button" class="btn-small" id="maSave">Save</button>
+        <button type="button" class="btn-small ghost" id="maSound">Turn on sound and pop-ups</button>
+        <button type="button" class="btn-small ghost hidden" id="maTest">Send a test alert (admin)</button>
+        <button type="button" class="btn-small ghost hidden" id="maTestCall">Test call to my phone (admin)</button>
+        <button type="button" class="btn-small ghost hidden" id="maCircularPreview">Preview monthly circular (admin)</button>
+      </div>
+      <p class="hint" id="maSoundNote"></p>
+      <p class="hint ma-status" id="maStatus"></p>
+      <div id="maCircularOut" class="ma-history hidden" style="white-space:pre-wrap"></div>
+
+      <div id="maHistoryWrap" class="hidden">
+        <div class="ma-btns"><b>Alert history (admin)</b> <button type="button" class="btn-small ghost" id="maHistoryBtn">Refresh</button></div>
+        <div id="maHistory" class="ma-history"></div>
+      </div>
+    </section>
+
+    <h3 class="sec-title">Satellite burning activity</h3>
+    <section class="stats" id="stats"></section>
+
+    <section class="panel">
+      <div class="heat-wrap">
+        <div id="months" class="months"></div>
+        <div id="heat" class="heat"></div>
+      </div>
+      <div class="legend">
+        <span>Less</span>
+        <i class="cell lv0"></i><i class="cell lv1"></i><i class="cell lv2"></i>
+        <i class="cell lv3"></i><i class="cell lv4"></i><i class="cell lv5"></i>
+        <span>More</span>
+        <span class="key"><i class="cell lv2 anom"></i> unusual</span>
+        <span class="key"><i class="cell lv2 extreme"></i> extreme</span>
+        <span class="key"><i class="cell nodata"></i> no data</span>
+      </div>
+      <p class="detail" id="detail">Click a day for details.</p>
+    </section>
+
+    <p class="hint" id="dataInfo"></p>
+    <p class="hint" id="empty"></p>
+    <p class="hint">City search by <a href="https://open-meteo.com/" target="_blank" rel="noopener">Open-Meteo.com</a> (CC BY 4.0)</p>
+    <p class="hint">Fire detections: NASA FIRMS (MODIS and VIIRS active fire data), <a href="https://firms.modaps.eosdis.nasa.gov/" target="_blank" rel="noopener">firms.modaps.eosdis.nasa.gov</a></p>
+  </main>
+
+  <script src="js/dashboard.js"></script>
+  <script src="js/outlook.js"></script>
+  <script src="js/alerts.js"></script>
+  <script src="js/demo.js"></script>
+</body>
+</html>

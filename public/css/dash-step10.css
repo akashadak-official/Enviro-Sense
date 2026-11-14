@@ -1,0 +1,46 @@
+/* ---------- Step 10: outlook, early warning, briefing (append to the end of dash.css) ---------- */
+.pill.LOW      { background: rgba(61,220,151,0.15); color: var(--green); }
+.pill.MODERATE { background: rgba(234,179,8,0.18);  color: #facc15; }
+.pill.HIGH     { background: rgba(239,68,68,0.22);  color: #fecaca; }
+
+/* early warning line inside the live panel */
+.ew { border-radius: 12px; padding: 10px 14px; margin-bottom: 14px; font-size: 0.85rem; line-height: 1.5;
+  border: 1px solid rgba(255,255,255,0.08); background: rgba(0,0,0,0.2); color: var(--muted);
+  transition: background 0.4s, border-color 0.4s, color 0.4s; }
+.ew b { margin-right: 8px; }
+.ew.NORMAL b { color: var(--green); }
+.ew.WATCH { border-color: #eab308; color: #facc15; background: rgba(234,179,8,0.1); }
+.ew.ALERT { border-color: #f97316; color: #fed7aa; background: rgba(249,115,22,0.14); animation: pulse 1.6s ease-in-out infinite; }
+.ew.WARNING, .ew.FIRE { border-color: #ef4444; color: #fecaca; background: rgba(239,68,68,0.16); }
+
+/* outlook */
+.fc-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; flex-wrap: wrap; margin-bottom: 16px; }
+.fc-summary { font-size: 0.92rem; line-height: 1.55; max-width: 780px; }
+.fc-chart { display: flex; gap: 6px; align-items: flex-end; }
+.fc-col { flex: 1; min-width: 0; display: flex; flex-direction: column; cursor: default; }
+.fc-plot { position: relative; height: 130px; border-bottom: 1px solid rgba(255,255,255,0.14); }
+.fc-bar, .fc-range { position: absolute; left: 16%; right: 16%; border-radius: 4px 4px 0 0; }
+.fc-bar { bottom: 0; background: var(--green); transition: height 0.7s cubic-bezier(0.22, 1, 0.36, 1); }
+.fc-range { background: rgba(255,255,255,0.2); transition: height 0.7s ease, bottom 0.7s ease; }
+.fc-norm { position: absolute; left: 4%; right: 4%; height: 2px; background: #fff; opacity: 0.8; }
+.fc-col.MODERATE .fc-bar { background: #eab308; }
+.fc-col.HIGH .fc-bar { background: #ef4444; }
+.fc-col.none .fc-plot { background: repeating-linear-gradient(45deg, #222, #222 3px, #2c2c2c 3px, #2c2c2c 6px); }
+.fc-col:hover .fc-plot { background: rgba(255,255,255,0.05); }
+.fc-lab { text-align: center; font-size: 0.68rem; color: var(--muted); margin-top: 5px; white-space: nowrap; }
+
+.fc-legend { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 12px; font-size: 0.78rem; color: var(--muted); }
+.fc-legend span { display: inline-flex; align-items: center; gap: 5px; }
+.sw { display: inline-block; width: 10px; height: 10px; border-radius: 2px; }
+.sw.LOW { background: var(--green); } .sw.MODERATE { background: #eab308; } .sw.HIGH { background: #ef4444; }
+.sw.rng { background: rgba(255,255,255,0.3); }
+.sw.nrm { height: 2px; background: #fff; }
+
+/* briefing */
+.brief { margin-top: 18px; padding-top: 14px; border-top: 1px solid rgba(255,255,255,0.08); }
+.brief-head { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 8px; }
+.brief-head .hint { margin-top: 0; }
+.brief-head .btn-small { margin-left: auto; }
+.brief-text { font-size: 0.92rem; line-height: 1.65; transition: opacity 0.3s; }
+.brief-text.busy { opacity: 0.5; }
+@media (max-width: 640px) { .fc-lab { font-size: 0.6rem; } .fc-chart { gap: 3px; } }

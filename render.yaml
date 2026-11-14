@@ -1,0 +1,35 @@
+# Render Blueprint: a free web service for the online demo.
+# On render.com choose New > Blueprint and select this repository.
+services:
+  - type: web
+    name: enviro-sense
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: node server.js
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_VERSION
+        value: "24"
+      - key: NODE_ENV
+        value: production
+      - key: TRUST_PROXY
+        value: "1"
+      - key: DEMO_MODE
+        value: "1"
+      - key: VIRTUAL_SENSOR
+        value: "1"
+      - key: BRIEF_PROVIDER
+        value: offline
+      - key: JWT_SECRET
+        generateValue: true
+      - key: DEVICE_KEY
+        generateValue: true
+      - key: ADMIN_USER
+        sync: false
+      - key: ADMIN_PASS
+        sync: false
+      - key: FIRMS_KEY
+        sync: false
+      - key: AUTO_SYNC
+        value: "0"

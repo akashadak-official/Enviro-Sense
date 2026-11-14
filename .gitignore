@@ -1,0 +1,18 @@
+# secrets and local data: never commit these
+.env
+.env.*
+!.env.example
+*.db
+*.db-wal
+*.db-shm
+*.db.tmp
+seed/*.tmp
+
+# dependencies and junk
+node_modules/
+*.zip
+*.csv
+*.log
+.DS_Store
+Thumbs.db
+inspect*.js

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enviro Sense | Admin panel</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Orbitron:wght@600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/fire.css">
+  <link rel="stylesheet" href="css/dash.css">
+  <link rel="stylesheet" href="css/dash-step10.css">
+  <link rel="stylesheet" href="css/dash-step12.css">
+  <link rel="stylesheet" href="css/step13.css">
+</head>
+<body>
+  <div class="bg-glow g1"></div>
+  <div class="bg-glow g2"></div>
+
+  <header class="brand corner no-anim" id="brand">
+    <h1 class="brand-title">Enviro Sense</h1>
+    <p class="brand-team">by team CyberNex HIT</p>
+    <p class="brand-college">Haldia Institute of Technology</p>
+    <p class="brand-dept">Department of Computer Science &amp; Engineering (Cyber Security)</p>
+  </header>
+
+  <div class="topbar dash-top">
+    <div class="who">
+      <span id="whoText">Admin panel</span>
+      <a class="logout" href="fire.html">NASA data and sensors</a>
+      <a class="logout" href="dashboard.html">Dashboard</a>
+    </div>
+  </div>
+
+  <main class="fire-page dash-main">
+    <h3 class="sec-title">Overview</h3>
+    <section class="panel">
+      <div class="mini-tiles" id="tiles"></div>
+      <p class="hint" id="aiLine"></p>
+    </section>
+
+    <h3 class="sec-title">Sensors</h3>
+    <section class="panel" id="sensorsBox"></section>
+
+    <h3 class="sec-title">Users</h3>
+    <section class="panel">
+      <div class="tbl-wrap"><table class="tbl" id="usersTbl"></table></div>
+      <p class="hint" id="usersMsg"></p>
+    </section>
+
+    <h3 class="sec-title">Alert history</h3>
+    <section class="panel">
+      <div class="tbl-wrap"><table class="tbl" id="alertsTbl"></table></div>
+    </section>
+
+    <h3 class="sec-title">Recent logins</h3>
+    <section class="panel">
+      <div class="tbl-wrap"><table class="tbl" id="loginsTbl"></table></div>
+    </section>
+
+    <h3 class="sec-title">Recent place lookups</h3>
+    <section class="panel">
+      <div class="tbl-wrap"><table class="tbl" id="viewsTbl"></table></div>
+      <div class="row-actions"><button type="button" class="btn-small ghost" id="refreshBtn">Refresh everything</button></div>
+    </section>
+  </main>
+
+  <script src="js/admin.js"></script>
+</body>
+</html>

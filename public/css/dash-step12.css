@@ -1,0 +1,23 @@
+/* ---------- Step 12: history and admin pages ---------- */
+.mini-tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin-bottom: 8px; }
+.mini { border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 12px 14px; background: rgba(0,0,0,0.18); }
+.mini b { display: block; font-size: 1.5rem; color: var(--green); line-height: 1.2; }
+.mini span { font-size: 0.76rem; color: var(--muted); }
+
+.tbl-wrap { overflow-x: auto; }
+.tbl { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
+.tbl th { text-align: left; font-weight: 500; color: var(--muted); padding: 8px 10px; border-bottom: 1px solid rgba(255,255,255,0.12); white-space: nowrap; }
+.tbl td { padding: 8px 10px; border-bottom: 1px solid rgba(255,255,255,0.05); vertical-align: top; }
+.tbl tr:hover td { background: rgba(255,255,255,0.03); }
+.tbl .num { text-align: right; }
+.tag { display: inline-block; padding: 1px 8px; border-radius: 999px; font-size: 0.7rem; border: 1px solid rgba(255,255,255,0.14); color: var(--muted); }
+.tag.ok { color: var(--green); border-color: rgba(61,220,151,0.4); }
+.tag.bad { color: #fca5a5; border-color: rgba(239,68,68,0.45); }
+.tag.admin { color: #facc15; border-color: rgba(234,179,8,0.45); }
+.row-actions { display: flex; gap: 8px; flex-wrap: wrap; margin: 12px 0 0; align-items: center; }
+.page-note { margin: 6px 0 16px; }
+.sensor-line { display: flex; flex-wrap: wrap; gap: 6px 16px; align-items: center; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.06); font-size: 0.85rem; }
+.sensor-line b { min-width: 140px; }
+.dot { display: inline-block; width: 9px; height: 9px; border-radius: 50%; background: #6b7280; margin-right: 6px; }
+.dot.on { background: var(--green); box-shadow: 0 0 8px var(--green); }
+.dot.alarm { background: #ef4444; box-shadow: 0 0 8px #ef4444; }

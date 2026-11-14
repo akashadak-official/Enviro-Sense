@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enviro Sense | Burning Calendar</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Orbitron:wght@600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/fire.css">
+  <link rel="stylesheet" href="css/step13.css">
+</head>
+<body>
+  <div class="bg-glow g1"></div>
+  <div class="bg-glow g2"></div>
+
+  <div class="topbar">
+    <span class="logo">Enviro Sense</span>
+    <div class="who">
+      <span id="whoText"></span>
+      <span class="modeTag" id="modeTag"></span>
+      <button id="logoutBtn" class="logout">Log out</button>
+    </div>
+  </div>
+
+  <main class="fire-page">
+    <h2>Burning Activity Calendar</h2>
+    <p class="sub">Satellite active-fire hotspots (MODIS + VIIRS), harmonized to one scale</p>
+
+    <section class="locbar">
+      <div id="lockedBox" class="locked hidden">
+        <span>🔒</span><b id="lockedName"></b>
+        <span>Local mode: the location is fixed to this device and cannot be changed</span>
+      </div>
+
+      <div id="searchBox" class="search-wrap hidden">
+        <input id="placeInput" type="text" autocomplete="off"
+               placeholder="Search any city (for example Haldia, Kolkata, Mumbai)">
+        <div id="suggest" class="suggest hidden"></div>
+        <div id="chips" class="chips"></div>
+      </div>
+
+      <div class="controls">
+        <select id="radiusSel">
+          <option value="25">25 km</option>
+          <option value="50">50 km</option>
+          <option value="100">100 km</option>
+          <option value="200">200 km</option>
+        </select>
+        <select id="yearSel"></select>
+      </div>
+      <p class="hint" id="placeNow"></p>
+    </section>
+
+    <section class="panel">
+      <div id="sensorCard" class="sensor-card">Select a place to see its sensor.</div>
+    </section>
+
+    <section class="stats" id="stats"></section>
+
+    <section class="panel">
+      <div class="heat-wrap">
+        <div id="months" class="months"></div>
+        <div id="heat" class="heat"></div>
+      </div>
+      <div class="legend">
+        <span>Less</span>
+        <i class="cell lv0"></i><i class="cell lv1"></i><i class="cell lv2"></i>
+        <i class="cell lv3"></i><i class="cell lv4"></i><i class="cell lv5"></i>
+        <span>More</span>
+        <span class="key"><i class="cell lv2 anom"></i> unusual</span>
+        <span class="key"><i class="cell lv2 extreme"></i> extreme</span>
+        <span class="key"><i class="cell nodata"></i> no data</span>
+      </div>
+      <p class="detail" id="detail">Click a day for details.</p>
+    </section>
+
+    <p class="hint" id="dataInfo"></p>
+    <p class="hint" id="empty"></p>
+
+    <section id="adminBox" class="panel hidden">
+      <strong>Admin: satellite data</strong>
+      <div class="row">
+        <select id="yearsSel">
+          <option value="1">Last 1 year</option>
+          <option value="2">Last 2 years</option>
+          <option value="3" selected>Last 3 years</option>
+        </select>
+        <button id="syncBtn" class="btn-small">Download region from NASA</button>
+        <label class="btn-small ghost">Import MODIS CSV<input type="file" id="impModis" accept=".csv" hidden></label>
+        <label class="btn-small ghost">Import VIIRS CSV<input type="file" id="impViirs" accept=".csv" hidden></label>
+      </div>
+      <div class="bar"><div id="barFill"></div></div>
+      <p class="hint" id="syncMsg"></p>
+    </section>
+
+    <section id="sensorAdmin" class="panel hidden">
+      <strong>Admin: sensors</strong>
+      <p class="hint">Registers a sensor at the place selected above. The device ID must match DEVICE_ID in the Pi script.</p>
+      <div class="row">
+        <input id="sDev" type="text" placeholder="device id (e.g. kolkata-01)">
+        <input id="sIp" type="text" placeholder="sensor IP (e.g. 192.168.137.40)">
+        <button id="sAdd" class="btn-small">Register at selected place</button>
+      </div>
+      <table class="sensors-list" id="sList"></table>
+      <p class="hint" id="sMsg"></p>
+    </section>
+
+    <p class="hint">City search by <a href="https://open-meteo.com/" target="_blank" rel="noopener">Open-Meteo.com</a> (CC BY 4.0)</p>
+  </main>
+
+  <script src="js/fire.js"></script>
+</body>
+</html>

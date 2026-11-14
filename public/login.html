@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enviro Sense | Login</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Orbitron:wght@600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/auth.css">
+  <link rel="stylesheet" href="css/step13.css">
+</head>
+<body>
+  <div class="bg-glow g1"></div>
+  <div class="bg-glow g2"></div>
+
+  <header id="brand" class="brand">
+    <h1 class="brand-title">Enviro Sense</h1>
+    <p class="brand-team">by team CyberNex HIT</p>
+    <p class="brand-college">Haldia Institute of Technology</p>
+    <p class="brand-dept">Department of Computer Science &amp; Engineering (Cyber Security)</p>
+  </header>
+
+  <main id="stage" class="stage">
+    <div class="auth-card">
+      <div class="mode-badge" id="modeBadge"></div>
+
+      <div class="tabs">
+        <button class="tab active" data-tab="login">Login</button>
+        <button class="tab" data-tab="signup">Sign Up</button>
+      </div>
+
+      <!-- LOGIN -->
+      <form id="loginForm" class="form">
+        <label>Username</label>
+        <input type="text" id="loginUser" placeholder="Enter username" autocomplete="username" required>
+
+        <label>Password</label>
+        <div class="pass-wrap">
+          <input type="password" id="loginPass" placeholder="Enter password" autocomplete="current-password" required>
+          <button type="button" class="eye" data-target="loginPass" aria-label="Show password">👁</button>
+        </div>
+
+        <p class="msg" id="loginMsg"></p>
+        <button type="submit" class="btn-primary">Login</button>
+        <button type="button" class="link-btn" id="toForgot">Forgot password?</button>
+      </form>
+
+      <!-- SIGNUP -->
+      <form id="signupForm" class="form hidden">
+        <label>Username</label>
+        <input type="text" id="suUser" placeholder="Choose a username" autocomplete="username" required>
+
+        <label>Email</label>
+        <input type="email" id="suEmail" placeholder="you@example.com" autocomplete="email" required>
+
+        <label>Phone (optional)</label>
+        <input type="tel" id="suPhone" placeholder="+91 XXXXX XXXXX">
+
+        <label>Password</label>
+        <div class="pass-wrap">
+          <input type="password" id="suPass" placeholder="At least 6 characters" autocomplete="new-password" required>
+          <button type="button" class="eye" data-target="suPass" aria-label="Show password">👁</button>
+        </div>
+
+        <label>Confirm password</label>
+        <div class="pass-wrap">
+          <input type="password" id="suPass2" placeholder="Repeat password" autocomplete="new-password" required>
+          <button type="button" class="eye" data-target="suPass2" aria-label="Show password">👁</button>
+        </div>
+
+        <p class="msg" id="signupMsg"></p>
+        <button type="submit" class="btn-primary">Create account</button>
+      </form>
+
+      <!-- VERIFY EMAIL -->
+      <form id="verifyForm" class="form hidden">
+        <h3 class="form-title">Verify your email</h3>
+        <p class="hint" id="verifyHint"></p>
+
+        <label>6-digit code</label>
+        <input type="text" id="verifyCode" class="code-input" inputmode="numeric" maxlength="6" placeholder="------" required>
+
+        <p class="msg" id="verifyMsg"></p>
+        <button type="submit" class="btn-primary">Verify</button>
+        <button type="button" class="link-btn" id="resendBtn">Resend code</button>
+        <button type="button" class="link-btn" data-goto="login">← Back to login</button>
+      </form>
+
+      <!-- FORGOT PASSWORD -->
+      <form id="forgotForm" class="form hidden">
+        <h3 class="form-title">Reset password</h3>
+
+        <div id="forgotStage1">
+          <label>Username</label>
+          <input type="text" id="fgUser" placeholder="Enter your username" autocomplete="username">
+          <button type="button" class="btn-primary" id="sendCodeBtn">Send code</button>
+        </div>
+
+        <div id="forgotStage2" class="hidden">
+          <p class="hint" id="forgotHint"></p>
+
+          <label>6-digit code</label>
+          <input type="text" id="fgCode" class="code-input" inputmode="numeric" maxlength="6" placeholder="------">
+
+          <label>New password</label>
+          <div class="pass-wrap">
+            <input type="password" id="fgNewPass" placeholder="At least 6 characters" autocomplete="new-password">
+            <button type="button" class="eye" data-target="fgNewPass" aria-label="Show password">👁</button>
+          </div>
+
+          <button type="button" class="btn-primary" id="resetBtn">Change password</button>
+        </div>
+
+        <p class="msg" id="forgotMsg"></p>
+        <button type="button" class="link-btn" data-goto="login">← Back to login</button>
+      </form>
+
+      <!-- Shown only in the online demo (DEMO_MODE=1) -->
+      <div id="demoBox" class="demo-box hidden">
+        <p class="hint">This is the online demo. Email codes are switched off here, so sign-up works straight away. Please do not enter real personal details.</p>
+        <button type="button" class="btn-primary" id="guestBtn">Continue as a guest</button>
+        <p class="msg" id="demoMsg"></p>
+      </div>
+
+      <a href="index.html" class="back-link">← Change mode</a>
+    </div>
+  </main>
+  <script src="js/brandfx.js"></script>
+  <script src="js/auth.js"></script>
+</body>
+</html>
